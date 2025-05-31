@@ -82,7 +82,7 @@ MIT License
 
 ## 作者
 
-Lastvish (junjierao@gmail.com)
+Lastvish
 
 ## 贡献
 
