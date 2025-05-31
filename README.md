@@ -66,7 +66,7 @@ cp config/config.example.yaml config/config.yaml
 1. 确保已正确配置 `config.yaml`
 2. 运行程序：
 ```bash
-python main.py
+python src/monitor.py
 ```
 
 ## 注意事项
