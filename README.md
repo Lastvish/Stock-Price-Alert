@@ -1,89 +1,89 @@
 # Stock Price Alert System
 
-一个基于 Finnhub API 的美股实时监控系统，支持股票和指数的实时价格监控及自定义警报。
+A real-time US stock monitoring system based on Finnhub API, supporting real-time price monitoring and custom alerts for stocks and indices.
 
-## 功能特点
+## Features
 
-- 实时监控个股价格（使用 WebSocket）
-- 定期监控指数数据（使用 REST API）
-- 自定义价格变动阈值警报
-- 自定义百分比变动阈值警报
-- 支持自定义警报音效
-- 完整的市场状态检查
-- 错误处理和自动重连机制
+- Real-time stock price monitoring (using WebSocket)
+- Periodic index data monitoring (using REST API)
+- Custom price change threshold alerts
+- Custom percentage change threshold alerts
+- Support for custom alert sounds
+- Complete market status checking
+- Error handling and automatic reconnection mechanism
 
-## 技术实现
+## Technical Implementation
 
-- 使用 Finnhub WebSocket API 实时监控股票价格
-- 使用 Finnhub REST API 监控指数数据
-- 支持配置文件自定义监控参数
-- 内置市场交易时间检查
-- 完整的错误处理机制
+- Uses Finnhub WebSocket API for real-time stock price monitoring
+- Uses Finnhub REST API for index data monitoring
+- Supports custom monitoring parameters via configuration file
+- Built-in market trading hours check
+- Comprehensive error handling mechanism
 
-## 安装说明
+## Installation
 
-1. 克隆仓库：
+1. Clone the repository:
 ```bash
 git clone https://github.com/Lastvish/Stock-Price-Alert.git
 cd Stock-Price-Alert
 ```
 
-2. 创建并激活虚拟环境：
+2. Create and activate virtual environment:
 ```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
-# 或
+# or
 .\venv\Scripts\activate  # Windows
 ```
 
-3. 安装依赖：
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. 配置：
-- 复制配置文件模板：
+4. Configuration:
+- Copy the configuration file template:
 ```bash
 cp config/config.example.yaml config/config.yaml
 ```
-- 编辑 `config/config.yaml`，设置您的 Finnhub API key 和监控参数
+- Edit `config/config.yaml` to set your Finnhub API key and monitoring parameters
 
-## 配置说明
+## Configuration Guide
 
-配置文件（config.yaml）包含以下主要参数：
+The configuration file (config.yaml) contains the following main parameters:
 
-- `api_key`: Finnhub API 密钥
-- `symbols`: 需要监控的股票代码列表
-- `indices`: 需要监控的指数列表
+- `api_key`: Finnhub API key
+- `symbols`: List of stock symbols to monitor
+- `indices`: List of indices to monitor
 - `thresholds`:
-  - `price`: 价格变动阈值（美元）
-  - `percentage`: 百分比变动阈值
-- `update_interval`: 数据更新间隔（秒）
-- `sound`: 警报音效设置
+  - `price`: Price change threshold (USD)
+  - `percentage`: Percentage change threshold
+- `update_interval`: Data update interval (seconds)
+- `sound`: Alert sound settings
 
-## 使用方法
+## Usage
 
-1. 确保已正确配置 `config.yaml`
-2. 运行程序：
+1. Ensure `config.yaml` is properly configured
+2. Run the program:
 ```bash
 python src/monitor.py
 ```
 
-## 注意事项
+## Important Notes
 
-- 请确保您有有效的 Finnhub API key
-- 建议在美股交易时间运行程序
-- 请注意 Finnhub API 的使用限制
-- 建议根据自己的需求调整警报阈值
+- Make sure you have a valid Finnhub API key
+- It's recommended to run the program during US market trading hours
+- Be aware of Finnhub API usage limits
+- Adjust alert thresholds according to your needs
 
-## 许可证
+## License
 
 MIT License
 
-## 作者
+## Author
 
-Lastvish (junjierao@gmail.com)
+Lastvish
 
-## 贡献
+## Contributing
 
-欢迎提交 Issue 和 Pull Request！ 
+Issues and Pull Requests are welcome! 
