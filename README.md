@@ -86,4 +86,8 @@ Lastvish
 
 ## Contributing
 
+<<<<<<< HEAD
 Issues and Pull Requests are welcome! 
+=======
+欢迎提交 Issue 和 Pull Request！ 
+>>>>>>> 2bc24489f76dac2514f6cd473a6a60879054ffdd
