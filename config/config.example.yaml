@@ -1,0 +1,53 @@
+stocks:
+  - symbol: "AAPL"    # 苹果公司股票代码
+    type: "stock"     # 普通股票
+    alerts:
+      price_change: 5.0      # 价格变动超过5美元
+      percentage_change: 5.0  # 涨跌幅超过5%
+      
+  - symbol: "^GSPC"   # S&P 500指数代码
+    type: "index"     # 指数
+    alerts:
+      price_change: 5.0      # 价格变动超过5美元
+      percentage_change: 0.5  # 涨跌幅超过0.5%
+
+settings:
+  interval: 10              # 监控间隔10秒
+  sound_file: "sounds/default_alert.wav"   # 警报音文件路径
+  # 推荐使用环境变量设置API密钥: export FINNHUB_API_KEY="your_api_key"
+  finnhub_api_key: ""  # 留空以强制使用环境变量
+
+# 新闻搜索相关配置
+news_alert:
+  enabled: true
+  deepseek:
+    # 推荐使用环境变量设置API密钥: export DEEPSEEK_API_KEY="your_api_key"
+    api_key: ""    # 留空以强制使用环境变量
+    # DeepSeek API使用OpenAI兼容格式
+    # 价格：输入$0.30/百万tokens，输出$0.88/百万tokens
+    # 上下文长度限制：163,840 tokens
+    # 输出长度限制：8,000 tokens
+  
+  # 触发条件配置
+  trigger_conditions:
+    time_window_minutes: 2      # 监控时间窗口（分钟）
+    min_data_points: 3          # 最小数据点数量
+    
+    # 价格变动阈值
+    price_movement:
+      absolute:
+        up: 5.0                 # 上涨超过5美元触发
+        down: -5.0              # 下跌超过5美元触发
+      percentage:
+        up: 3.0                 # 上涨超过3%触发
+        down: -3.0              # 下跌超过3%触发
+    
+    # 防抖动设置
+    debounce:
+      cool_down_minutes: 30     # 同一股票的两次新闻搜索之间的最小间隔（分钟）
+  
+  # 新闻搜索设置
+  search_settings:
+    time_window_hours: 24       # 搜索最近24小时的新闻
+    max_results: 5              # 每次返回的最大新闻数量
+    min_relevance_score: 0.7    # 最小相关度分数 

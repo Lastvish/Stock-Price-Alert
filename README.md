@@ -46,35 +46,54 @@ pip install -r requirements.txt
 ```bash
 cp config/config.example.yaml config/config.yaml
 ```
-- Edit `config/config.yaml` to set your Finnhub API key and monitoring parameters
+- Set up your API keys (推荐使用环境变量):
+```bash
+# Finnhub API密钥
+export FINNHUB_API_KEY="your_finnhub_api_key"
+
+# DeepSeek API密钥 (如果启用新闻搜索功能)
+export DEEPSEEK_API_KEY="your_deepseek_api_key"
+```
+- 或者在 `config/config.yaml` 中设置API密钥和监控参数
 
 ## Configuration Guide
 
-The configuration file (config.yaml) contains the following main parameters:
+配置文件 (config.yaml) 包含以下主要参数：
 
-- `api_key`: Finnhub API key
-- `symbols`: List of stock symbols to monitor
-- `indices`: List of indices to monitor
-- `thresholds`:
-  - `price`: Price change threshold (USD)
-  - `percentage`: Percentage change threshold
-- `update_interval`: Data update interval (seconds)
-- `sound`: Alert sound settings
+- API密钥设置 (推荐使用环境变量):
+  - `FINNHUB_API_KEY`: Finnhub API密钥
+  - `DEEPSEEK_API_KEY`: DeepSeek API密钥 (用于新闻搜索)
+- 监控设置:
+  - `symbols`: 要监控的股票列表
+  - `indices`: 要监控的指数列表
+  - `thresholds`:
+    - `price`: 价格变动阈值 (美元)
+    - `percentage`: 百分比变动阈值
+  - `update_interval`: 数据更新间隔 (秒)
+  - `sound`: 警报声音设置
 
 ## Usage
 
-1. Ensure `config.yaml` is properly configured
-2. Run the program:
+1. 确保已设置API密钥（环境变量或配置文件）
+2. 运行程序:
 ```bash
 python src/monitor.py
 ```
 
 ## Important Notes
 
-- Make sure you have a valid Finnhub API key
-- It's recommended to run the program during US market trading hours
-- Be aware of Finnhub API usage limits
-- Adjust alert thresholds according to your needs
+- 确保您有有效的 Finnhub API 密钥
+- 推荐使用环境变量来存储API密钥，这样更安全
+- 建议在美国市场交易时间运行程序
+- 注意 Finnhub API 的使用限制
+- 根据需要调整警报阈值
+
+## Security Notes
+
+- 不要在代码或配置文件中直接存储API密钥
+- 不要将包含API密钥的文件提交到版本控制系统
+- 使用环境变量来管理敏感信息
+- 定期更换API密钥以提高安全性
 
 ## License
 
@@ -86,8 +105,4 @@ Lastvish
 
 ## Contributing
 
-<<<<<<< HEAD
-Issues and Pull Requests are welcome! 
-=======
-欢迎提交 Issue 和 Pull Request！ 
->>>>>>> 2bc24489f76dac2514f6cd473a6a60879054ffdd
+欢迎提交 Issue 和 Pull Request！

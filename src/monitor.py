@@ -17,9 +17,11 @@ class StockMonitor:
         """初始化股票监控器"""
         self.config = load_config()
         self.alert_manager = AlertManager(self.config['settings']['sound_file'])
-        self.api_key = self.config['settings']['finnhub_api_key']
+        
+        # 优先从环境变量读取API密钥
+        self.api_key = os.environ.get('FINNHUB_API_KEY') or self.config['settings'].get('finnhub_api_key')
         if not self.api_key:
-            print("错误: 请在config.yaml中设置Finnhub API key")
+            print("错误: 请设置FINNHUB_API_KEY环境变量或在config.yaml中设置finnhub_api_key")
             sys.exit(1)
         
         self.prices = {}
